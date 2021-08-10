@@ -8,12 +8,12 @@ export default class App extends Component {
 
   template() {
     return `
-      <div id="items"></div>
+      <div id="app"></div>
     `;
   }
 
   mounted() {
-    const items = this.target.querySelector("#items");
+    const items = this.target.querySelector("#app");
     new Items(items);
   }
 }

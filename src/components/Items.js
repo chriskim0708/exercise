@@ -10,10 +10,12 @@ export default class Items extends Component {
   template() {
     const { items } = this.state;
     return `
-      <ul>
-        ${items.map((item) => `<li>${item}</li>`).join("")}
-      </ul>
-      <button class="addBtn red">추가</button>
+      <div id="items">
+        <ul>
+          ${items.map((item) => `<li>${item}</li>`).join("")}
+        </ul>
+        <button class="addBtn red">추가</button>
+      </div>
     `;
   }
   setEvent() {
