@@ -1,5 +1,6 @@
 import Component from "./core/component";
-import Items from "./components/Items";
+import Registration from "./components/Registration/Registration";
+import "./App.css";
 
 export default class App extends Component {
   setup() {
@@ -13,7 +14,7 @@ export default class App extends Component {
   }
 
   mounted() {
-    const items = this.target.querySelector("#app");
-    new Items(items);
+    const app = this.target.querySelector("#app");
+    new Registration(app);
   }
 }
