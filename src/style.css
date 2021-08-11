@@ -12,12 +12,13 @@ h3,
 p,
 ul,
 li {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
 body {
-  min-height: 100%;
+  height: 100%;
   background-color: #e6f4ff;
 }
 
@@ -26,57 +27,66 @@ li {
   list-style: none;
 }
 
-.row {
+.container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: flex-start;
+  flex-direction: column;
+  height: 100vh;
 }
+.contanier .header {
+  height: 65px;
+}
+.container .toolbar {
+  height: 30px;
+}
+.container .content {
+  display: flex;
+  flex: 1;
+}
+.container .content .aside {
+  flex: none;
+  width: 200px;
+}
+.container .content .main {
+  flex: 1;
+}
+
 .col {
   max-width: 100%;
 }
 .col.push-left {
   margin-left: auto;
 }
-.cols-1 {
-  width: 12.5%;
-  flex-basis: 12.5%;
-}
-.cols-2 {
-  width: 25%;
-  flex-basis: 25%;
-}
-.cols-3 {
-  width: 37.5%;
-  flex-basis: 37.5%;
-}
-.cols-4 {
-  width: 50%;
-  flex-basis: 50%;
-}
-.cols-5 {
-  width: 62.5%;
-  flex-basis: 62.5%;
-}
-.cols-6 {
-  width: 75%;
-  flex-basis: 75%;
-}
-.cols-8 {
-  width: 100%;
-  flex-basis: 100%;
-}
 
 .content-box {
   background-color: #fff;
   border: 1px solid #c5d3de;
+  overflow: auto;
 }
 
 .pa-15 {
   padding: 15px;
 }
+.pa-10 {
+  padding: 10px;
+}
 .pt-0 {
   padding-top: 0;
+}
+
+.ma-15 {
+  margin: 15px;
+}
+.ml-15 {
+  margin-left: 15px;
+}
+.mt-0 {
+  margin-top: 0;
+}
+.mb-0 {
+  margin-bottom: 0;
+}
+.ml-0 {
+  margin-left: 0;
 }
 
 .ml-1 {

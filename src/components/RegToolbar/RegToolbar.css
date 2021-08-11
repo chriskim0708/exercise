@@ -1,0 +1,12 @@
+.toolbar-container {
+    display: flex;
+    flex: 1;
+}
+.toolbar-item:nth-child(1) {
+    flex: none;
+    width: 200px;
+}
+.toolbar-item:nth-child(2) {
+    display: flex;
+    flex: 1;
+}

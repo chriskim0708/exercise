@@ -9,16 +9,12 @@ export default class Registration extends Component {
   }
   template() {
     return `
-      <div id="reg-toolbar">
-        <div class="row">
-          <div id="routine-button-component" class="col cols-3"></div>
-          <div class="col cols-5">
-            <div class="row">
-              <div id="exercise-button-component" class="col"></div>
-              <div id="delete-button-component" class="col ml-1"></div>
-              <div id="total-timer-component" class="col push-left">전체 시간 4분 25초</div>
-            </div>
-          </div>
+      <div id="reg-toolbar" class="toolbar-container">
+        <div id="routine-button-component" class="toolbar-item"></div>
+        <div class="toolbar-item ml-15">
+          <div id="exercise-button-component" class="col"></div>
+          <div id="delete-button-component" class="col ml-1"></div>
+          <div id="total-timer-component" class="col push-left">전체 시간 4분 25초</div>
         </div>
       </div>
     `;
