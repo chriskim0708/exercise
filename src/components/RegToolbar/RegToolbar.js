@@ -1,12 +1,22 @@
 import Component from "../../core/component";
 import Button from "../Button/Button";
+import ToggleButton from "../ToggleButton/ToggleButton";
 import TotalTimer from "../TotalTimer/TotalTimer";
 import "./RegToolbar.css";
 
+const defaultProps = {
+  addRoutineItem: () => {},
+  isInputRoutine: false
+};
+
 export default class Registration extends Component {
   setup() {
-    this.state = {};
+    this.props = {
+      ...defaultProps,
+      ...this.props
+    };
   }
+
   template() {
     return `
       <div id="reg-toolbar" class="toolbar-container">
@@ -19,7 +29,10 @@ export default class Registration extends Component {
       </div>
     `;
   }
+
   mounted() {
+    const { isInputRoutine } = this.props;
+    const { addRoutineItem } = this;
     const routineButtonComponent = this.target.querySelector(
       "#routine-button-component"
     );
@@ -32,9 +45,18 @@ export default class Registration extends Component {
     const totalTimerComponent = this.target.querySelector(
       "#total-timer-component"
     );
-    new Button(routineButtonComponent, { text: "새 운동 루틴 +" });
+    new ToggleButton(routineButtonComponent, {
+      text: "새 운동 루틴 +",
+      isActive: isInputRoutine,
+      onToggle: addRoutineItem.bind(this)
+    });
     new Button(exerciseButtonComponent, { text: "+ 운동 추가" });
     new Button(deleteButtonComponent, { text: "삭제" });
     new TotalTimer(totalTimerComponent, { time: 0 });
+  }
+
+  addRoutineItem() {
+    const { addRoutineItem } = this.props;
+    addRoutineItem();
   }
 }

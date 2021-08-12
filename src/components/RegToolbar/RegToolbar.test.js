@@ -14,8 +14,10 @@ describe("RegToolbar", () => {
     component = new RegToolbar(container);
   });
 
-  test("rendered RegToolbar component", () => {
+  test("렌더링 확인", () => {
     const element = container.querySelector("#reg-toolbar");
     expect(element).toBeInTheDocument();
   });
+
+  test("새 운동 루틴 클릭 시 true 전달", () => {});
 });

@@ -1,14 +1,16 @@
 import Component from "../../core/component";
 import "./Input.css";
 
+const defaultProps = {
+  type: "text",
+  placeholder: ""
+};
+
 export default class Input extends Component {
   template() {
-    const defaultProps = {
-      type: 'text'
-    }
-    const { type } = this.props || defaultProps;
+    const { type, placeholder } = this.props || defaultProps;
     return `
-      <input type="${type}" class="input-box" />
+      <input type="${type}" placeholder="${placeholder}" class="input-box" />
     `;
   }
 }

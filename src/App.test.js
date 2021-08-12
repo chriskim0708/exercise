@@ -1,13 +1,13 @@
 /**
- * @jest-environment jsdom 
+ * @jest-environment jsdom
  */
-import '@testing-library/jest-dom/extend-expect'
+import "@testing-library/jest-dom/extend-expect";
 import App from "./App.js";
 
-test('rendered App component', () => {
-  document.body.innerHTML = `<div id="root"></div>`;
-  const container = document.querySelector("#root")
+test("렌더링 확인", () => {
+  document.body.innerHTML = `<div id="container"></div>`;
+  const container = document.querySelector("#container");
   new App(container);
-  const element = container.querySelector('#app')
-  expect(element).toBeInTheDocument()
-})
+  const element = container.querySelector("#app");
+  expect(element).toBeInTheDocument();
+});

@@ -7,7 +7,9 @@ import "./Registration.css";
 
 export default class Registration extends Component {
   setup() {
-    this.state = {};
+    this.state = {
+      isInputRoutine: false
+    };
   }
   template() {
     return `
@@ -30,16 +32,31 @@ export default class Registration extends Component {
       </div>
     `;
   }
+
+  addRoutineItem() {
+    this.setState({ isInputRoutine: !this.state.isInputRoutine });
+  }
+
   mounted() {
+    const { isInputRoutine } = this.state;
     const headerComponent = this.target.querySelector("#header-component");
     const regToolbarComponent = this.target.querySelector(
       "#reg-toolbar-component"
     );
-    const routineListComponent = this.target.querySelector("#routine-list-component");
-    const exerciseListComponent = this.target.querySelector("#exercise-list-component");
+    const routineListComponent = this.target.querySelector(
+      "#routine-list-component"
+    );
+    const exerciseListComponent = this.target.querySelector(
+      "#exercise-list-component"
+    );
     new Header(headerComponent, { title: "매일 운동 루틴" });
-    new RegToolbar(regToolbarComponent);
-    new RoutineList(routineListComponent);
+    new RegToolbar(regToolbarComponent, {
+      addRoutineItem: this.addRoutineItem.bind(this),
+      isInputRoutine
+    });
+    new RoutineList(routineListComponent, {
+      isInputRoutine
+    });
     new ExerciseList(exerciseListComponent);
   }
 }
