@@ -14,9 +14,21 @@ describe('Registration', () => {
     component = new Registration(container);
   })
 
-  test('rendered Registration component', () => {
+  test('렌더링 확인', () => {
     const element = container.querySelector('#registration')
     expect(element).toBeInTheDocument()
+  })
+
+  test('새 운동 등록 이벤트가 호출되면 state.isInputRoutine 상태 변경', () => {
+    let state;
+    
+    component.addRoutineItem()
+    state = component.state.isInputRoutine;
+    expect(state).toEqual(true)
+    
+    component.addRoutineItem()
+    state = component.state.isInputRoutine;
+    expect(state).toEqual(false)
   })
 })
 

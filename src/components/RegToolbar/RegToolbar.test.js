@@ -5,16 +5,15 @@ import "@testing-library/jest-dom/extend-expect";
 import RegToolbar from "./RegToolbar.js";
 
 let container;
-let component;
 
 describe("RegToolbar", () => {
   beforeEach(() => {
     document.body.innerHTML = `<div id="container"></div>`;
     container = document.querySelector("#container");
-    component = new RegToolbar(container);
   });
 
   test("렌더링 확인", () => {
+    new RegToolbar(container);
     const element = container.querySelector("#reg-toolbar");
     expect(element).toBeInTheDocument();
   });

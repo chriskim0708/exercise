@@ -5,7 +5,6 @@ import "@testing-library/jest-dom/extend-expect";
 import Header from "./Header.js";
 
 let container;
-let component;
 
 describe("Header", () => {
   beforeEach(() => {

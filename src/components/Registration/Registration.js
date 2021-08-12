@@ -8,7 +8,14 @@ import "./Registration.css";
 export default class Registration extends Component {
   setup() {
     this.state = {
-      isInputRoutine: false
+      isInputRoutine: false,
+      routineInputValue: 'asdfsdf',
+      routineInputMode: 'add',
+      routineItems: [
+        { name: 'a', selected: true },
+        { name: 'b', selected: false },
+        { name: 'c', selected: false }
+      ]
     };
   }
   template() {
@@ -34,11 +41,42 @@ export default class Registration extends Component {
   }
 
   addRoutineItem() {
-    this.setState({ isInputRoutine: !this.state.isInputRoutine });
+    const { isInputRoutine, routineInputValue } = this.state
+    this.setState({
+      routineInputMode: 'add',
+      isInputRoutine: !isInputRoutine,
+      routineInputValue: isInputRoutine ? routineInputValue : ''
+    });
+  }
+
+  deleteRoutineItem(idx) {
+    const items = [...this.state.routineItems]
+    items.splice(idx, 1)
+    this.setState({
+      isInputRoutine: false,
+      routineInputValue: '',
+      routineItems: items
+    })
+  }
+
+  updateRoutineItem(idx) {
+    const { routineItems } = this.state
+    this.setState({
+      routineInputMode: 'update',
+      isInputRoutine: true,
+      routineInputValue: routineItems[idx].name
+    });
+  }
+
+  onSelectRoutineItem(idx) {
+    const { routineItems } = this.state
+    const selectedItems = routineItems.map((item, i) => ({ ...item, selected: i === idx }))
+    this.setState({ routineItems: selectedItems })
   }
 
   mounted() {
-    const { isInputRoutine } = this.state;
+    const { routineInputValue, isInputRoutine, routineItems, routineInputMode } = this.state;
+    const { onSelectRoutineItem, updateRoutineItem, deleteRoutineItem } = this
     const headerComponent = this.target.querySelector("#header-component");
     const regToolbarComponent = this.target.querySelector(
       "#reg-toolbar-component"
@@ -55,7 +93,13 @@ export default class Registration extends Component {
       isInputRoutine
     });
     new RoutineList(routineListComponent, {
-      isInputRoutine
+      isInputRoutine,
+      routineInputValue,
+      routineItems,
+      routineInputMode,
+      onSelect: onSelectRoutineItem.bind(this),
+      deleteItem: deleteRoutineItem.bind(this),
+      updateItem: updateRoutineItem.bind(this)
     });
     new ExerciseList(exerciseListComponent);
   }
