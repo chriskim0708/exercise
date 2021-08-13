@@ -10,6 +10,12 @@ const defaultProps = {
   onCancel: () => {}
 };
 
+const bounce = (fn, timeout) => {
+  const setFn = setTimeout(() => {
+    fn();
+  }, timeout);
+};
+
 export default class Input extends Component {
   setup() {
     this.props = {
