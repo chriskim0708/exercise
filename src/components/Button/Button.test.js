@@ -28,7 +28,7 @@ describe("Button", () => {
     const onClick = jest.fn();
     new Button(container, {
       text: "삭제",
-      onClick: onClick.bind(this)
+      onClick
     });
     const element = container.querySelector(".btn");
     element.click();
